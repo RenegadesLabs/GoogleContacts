@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "661716277486",
+    "project_id": "project--2759073950751644173"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661716277486:android:6b8e1221048e26a9",
+        "android_client_info": {
+          "package_name": "com.renegades.labs.googlecontacts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "661716277486-c3i46d5pejoisssq6lr95tolinncsjqn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.renegades.labs.googlecontacts",
+            "certificate_hash": "3ae2a1abba31c6b88d4a752d5209ad90360baa2f"
+          }
+        },
+        {
+          "client_id": "661716277486-r8tr44j2b5gdjisfidmvak80htra5598.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3rwTfsNdFjQez6OltqYR_Qieh9oHumeg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

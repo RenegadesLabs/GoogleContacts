@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.renegades.labs.googlecontacts.MainActivity">
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="224dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/sign_out_button"
+        android:layout_width="216dp"
+        android:layout_height="28dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#FFFFFF"
+        android:text="Sign Out"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/add_contact"
+        android:layout_width="216dp"
+        android:layout_height="28dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
+        android:background="#FFFFFF"
+        android:text="Add Contact"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/order_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Order by:" />
+
+        <RadioGroup
+            android:id="@+id/first_radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radioFirst"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="first name" />
+
+            <RadioButton
+                android:id="@+id/radioLast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="last name" />
+
+            <RadioButton
+                android:id="@+id/radioEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="quantity of emails" />
+
+            <RadioButton
+                android:id="@+id/radioPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="quantity of phones" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/second_radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radioAsc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ascending" />
+
+            <RadioButton
+                android:id="@+id/radioDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="descending" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/contacts_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" />
+
+</LinearLayout>
