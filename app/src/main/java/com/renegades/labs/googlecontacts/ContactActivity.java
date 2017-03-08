@@ -32,7 +32,7 @@ public class ContactActivity extends AppCompatActivity {
         phonesListView = (ListView) findViewById(R.id.phones_list_view);
 
         Intent intent = getIntent();
-        int id = intent.getIntExtra("Id", 0) + 1;
+        int id = intent.getIntExtra("Id", 0);
         DBHelper dbHelper = new DBHelper(this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String sqlQuery = "SELECT first, last FROM contacts WHERE id=" + id + ";";
@@ -47,11 +47,12 @@ public class ContactActivity extends AppCompatActivity {
 
         sqlQuery = "SELECT email FROM emails WHERE contactId=" + id + ";";
         c = db.rawQuery(sqlQuery, null);
-        ArrayList<String> emails = new ArrayList<>();
+        ArrayList<ListItem> emails = new ArrayList<>();
         if (c != null) {
             if (c.moveToFirst()) {
                 do {
-                    emails.add(c.getString(0));
+                    ListItem listItem = new ListItem(c.getString(0), 0);
+                    emails.add(listItem);
                 } while (c.moveToNext());
             }
             c.close();
@@ -61,11 +62,12 @@ public class ContactActivity extends AppCompatActivity {
 
         sqlQuery = "SELECT phone FROM phones WHERE contactId=" + id + ";";
         c = db.rawQuery(sqlQuery, null);
-        ArrayList<String> phones = new ArrayList<>();
+        ArrayList<ListItem> phones = new ArrayList<>();
         if (c != null) {
             if (c.moveToFirst()) {
                 do {
-                    phones.add(c.getString(0));
+                    ListItem listItem = new ListItem(c.getString(0), 0);
+                    phones.add(listItem);
                 } while (c.moveToNext());
             }
             c.close();

@@ -15,15 +15,16 @@ import java.util.List;
 
 public class MyListViewAdapter extends BaseAdapter {
     Context mContext;
-    List<String> contactsList;
+    List<ListItem> contactsList;
 
-    public MyListViewAdapter(Context mContext, List<String> contactsList) {
+    public MyListViewAdapter(Context mContext, List<ListItem> contactsList) {
         this.mContext = mContext;
         this.contactsList = contactsList;
     }
 
     static class ViewHolder {
         TextView textItem;
+        int id;
     }
 
     @Override
@@ -56,8 +57,9 @@ public class MyListViewAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) view.getTag();
         }
 
-        String rowText = contactsList.get(i);
+        String rowText = contactsList.get(i).getString();
         viewHolder.textItem.setText(rowText);
+        viewHolder.id = contactsList.get(i).getId();
 
         return view;
     }

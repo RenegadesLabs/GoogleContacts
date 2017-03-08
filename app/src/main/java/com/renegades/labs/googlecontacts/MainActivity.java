@@ -162,14 +162,15 @@ public class MainActivity extends AppCompatActivity implements
                 id1 = 0;
                 id2 = 0;
             }
-            List<String> contacts = getContactsFromDB(id1, id2);
+            List<ListItem> contacts = getContactsFromDB(id1, id2);
             BaseAdapter adapter = new MyListViewAdapter(this, contacts);
             contactsListView.setAdapter(adapter);
             contactsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Intent intent = new Intent(MainActivity.this, ContactActivity.class);
-                    intent.putExtra("Id", i);
+                    int id = ((MyListViewAdapter.ViewHolder) view.getTag()).id;
+                    intent.putExtra("Id", id);
                     startActivity(intent);
                 }
             });
@@ -183,9 +184,9 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
-    private List<String> getContactsFromDB(int firstId, int secondId) {
-        List<String> contacts = new ArrayList<>();
-        String sqlQuery = "SELECT first, last FROM contacts";
+    private List<ListItem> getContactsFromDB(int firstId, int secondId) {
+        List<ListItem> contacts = new ArrayList<>();
+        String sqlQuery = "SELECT contacts.id, first, last FROM contacts";
         if (firstId != 0 || secondId != 0) {
             if (firstId == R.id.radioFirst) {
                 sqlQuery += " WHERE accId='" + accId + "' ORDER BY first";
@@ -217,14 +218,11 @@ public class MainActivity extends AppCompatActivity implements
 
         if (c != null) {
             if (c.moveToFirst()) {
-                String str;
                 do {
-                    str = "";
-                    for (String cn : c.getColumnNames()) {
-                        str = str.concat(c.getString(c.getColumnIndex(cn)) + " ");
-                    }
-                    Log.d(TAG, str);
-                    contacts.add(str);
+                    int id = Integer.parseInt(c.getString(0));
+                    String s = c.getString(1) + " " + c.getString(2);
+                    ListItem listItem = new ListItem(s, id);
+                    contacts.add(listItem);
                 } while (c.moveToNext());
             }
             c.close();
